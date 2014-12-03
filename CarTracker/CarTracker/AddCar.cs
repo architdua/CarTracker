@@ -16,6 +16,7 @@ namespace CarTracker
         {
             InitializeComponent();
         }
+        private Dictionary<int, Car> carDictionary = new Dictionary<int, Car>();
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -28,26 +29,21 @@ namespace CarTracker
                 int vehicleNumber;
                 double doubleConverter;
                 double carPrice;
+
                 //check carModel value
                 if (txtCarModel.Text == null)
                 {
                     MessageBox.Show("Please enter the Car Model");
                     txtCarModel.Focus();
                 }
-                else
-                {
-                    carModel = txtCarModel.Text;
-                }
+              
                 //check carManufacturer value
                 if (txtCarManufacturer.Text == null)
                 {
                     MessageBox.Show("Please enter the Car Manufacturer");
                     txtCarManufacturer.Focus();
                 }
-                else
-                {
-                    carManufacturer = txtCarManufacturer.Text;
-                }
+                
                 //parse manufacturerYear
                 if (int.TryParse(txtManufacturingYear.Text, out intConverter))
                 {
@@ -85,8 +81,10 @@ namespace CarTracker
                     txtCarPrice.Focus();
                     return;
                 }
-                //Dictionary <Car,
+
+                Car.GetInstance().addCar(txtCarModel.Text, txtCarManufacturer.Text, manufacturerYear, vehicleNumber, carPrice);
                 clear();
+                MessageBox.Show("Car added to System with vehicle number: " + vehicleNumber);
             }
             catch(Exception ex)
             {

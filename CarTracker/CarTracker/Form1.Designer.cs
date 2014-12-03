@@ -30,15 +30,15 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.carFinderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCarToolStripMenuItem,
-            this.searchCarToolStripMenuItem});
+            this.addCarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(284, 24);
@@ -47,17 +47,26 @@
             // 
             // addCarToolStripMenuItem
             // 
+            this.addCarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addCarToolStripMenuItem1,
+            this.carFinderToolStripMenuItem});
             this.addCarToolStripMenuItem.Name = "addCarToolStripMenuItem";
-            this.addCarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.addCarToolStripMenuItem.Text = "Add Car";
-            this.addCarToolStripMenuItem.Click += new System.EventHandler(this.addCarToolStripMenuItem_Click);
+            this.addCarToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.addCarToolStripMenuItem.Text = "File";
             // 
-            // searchCarToolStripMenuItem
+            // addCarToolStripMenuItem1
             // 
-            this.searchCarToolStripMenuItem.Name = "searchCarToolStripMenuItem";
-            this.searchCarToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.searchCarToolStripMenuItem.Text = "Car Finder";
-            this.searchCarToolStripMenuItem.Click += new System.EventHandler(this.searchCarToolStripMenuItem_Click);
+            this.addCarToolStripMenuItem1.Name = "addCarToolStripMenuItem1";
+            this.addCarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.addCarToolStripMenuItem1.Text = "Add Car";
+            this.addCarToolStripMenuItem1.Click += new System.EventHandler(this.addCarToolStripMenuItem1_Click);
+            // 
+            // carFinderToolStripMenuItem
+            // 
+            this.carFinderToolStripMenuItem.Name = "carFinderToolStripMenuItem";
+            this.carFinderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.carFinderToolStripMenuItem.Text = "Car Finder";
+            this.carFinderToolStripMenuItem.Click += new System.EventHandler(this.carFinderToolStripMenuItem_Click);
             // 
             // frmMainForm
             // 
@@ -80,7 +89,8 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addCarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchCarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addCarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem carFinderToolStripMenuItem;
     }
 }
 

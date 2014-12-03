@@ -46,9 +46,10 @@
             this.btnFind.Location = new System.Drawing.Point(196, 157);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 22;
+            this.btnFind.TabIndex = 5;
             this.btnFind.Text = "Find Car";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // txtDisplayCarManufacturer
             // 
@@ -56,7 +57,7 @@
             this.txtDisplayCarManufacturer.Location = new System.Drawing.Point(171, 63);
             this.txtDisplayCarManufacturer.Name = "txtDisplayCarManufacturer";
             this.txtDisplayCarManufacturer.Size = new System.Drawing.Size(100, 20);
-            this.txtDisplayCarManufacturer.TabIndex = 21;
+            this.txtDisplayCarManufacturer.TabIndex = 2;
             // 
             // txtDisplayManufacturingYear
             // 
@@ -64,14 +65,14 @@
             this.txtDisplayManufacturingYear.Location = new System.Drawing.Point(171, 91);
             this.txtDisplayManufacturingYear.Name = "txtDisplayManufacturingYear";
             this.txtDisplayManufacturingYear.Size = new System.Drawing.Size(100, 20);
-            this.txtDisplayManufacturingYear.TabIndex = 20;
+            this.txtDisplayManufacturingYear.TabIndex = 3;
             // 
             // txtRequestVehicleNumber
             // 
             this.txtRequestVehicleNumber.Location = new System.Drawing.Point(171, 11);
             this.txtRequestVehicleNumber.Name = "txtRequestVehicleNumber";
             this.txtRequestVehicleNumber.Size = new System.Drawing.Size(100, 20);
-            this.txtRequestVehicleNumber.TabIndex = 19;
+            this.txtRequestVehicleNumber.TabIndex = 0;
             // 
             // txtDisplayCarPrice
             // 
@@ -79,7 +80,7 @@
             this.txtDisplayCarPrice.Location = new System.Drawing.Point(171, 117);
             this.txtDisplayCarPrice.Name = "txtDisplayCarPrice";
             this.txtDisplayCarPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtDisplayCarPrice.TabIndex = 18;
+            this.txtDisplayCarPrice.TabIndex = 4;
             // 
             // txtDisplayCarModel
             // 
@@ -87,7 +88,7 @@
             this.txtDisplayCarModel.Location = new System.Drawing.Point(171, 37);
             this.txtDisplayCarModel.Name = "txtDisplayCarModel";
             this.txtDisplayCarModel.Size = new System.Drawing.Size(100, 20);
-            this.txtDisplayCarModel.TabIndex = 17;
+            this.txtDisplayCarModel.TabIndex = 1;
             // 
             // lblDisplayPrice
             // 

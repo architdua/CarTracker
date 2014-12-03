@@ -92,35 +92,35 @@
             this.txtCarModel.Location = new System.Drawing.Point(172, 5);
             this.txtCarModel.Name = "txtCarModel";
             this.txtCarModel.Size = new System.Drawing.Size(100, 20);
-            this.txtCarModel.TabIndex = 5;
+            this.txtCarModel.TabIndex = 0;
             // 
             // txtCarPrice
             // 
             this.txtCarPrice.Location = new System.Drawing.Point(172, 113);
             this.txtCarPrice.Name = "txtCarPrice";
             this.txtCarPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtCarPrice.TabIndex = 6;
+            this.txtCarPrice.TabIndex = 4;
             // 
             // txtVehicleNumber
             // 
             this.txtVehicleNumber.Location = new System.Drawing.Point(172, 87);
             this.txtVehicleNumber.Name = "txtVehicleNumber";
             this.txtVehicleNumber.Size = new System.Drawing.Size(100, 20);
-            this.txtVehicleNumber.TabIndex = 7;
+            this.txtVehicleNumber.TabIndex = 3;
             // 
             // txtManufacturingYear
             // 
             this.txtManufacturingYear.Location = new System.Drawing.Point(172, 59);
             this.txtManufacturingYear.Name = "txtManufacturingYear";
             this.txtManufacturingYear.Size = new System.Drawing.Size(100, 20);
-            this.txtManufacturingYear.TabIndex = 8;
+            this.txtManufacturingYear.TabIndex = 2;
             // 
             // txtCarManufacturer
             // 
             this.txtCarManufacturer.Location = new System.Drawing.Point(172, 31);
             this.txtCarManufacturer.Name = "txtCarManufacturer";
             this.txtCarManufacturer.Size = new System.Drawing.Size(100, 20);
-            this.txtCarManufacturer.TabIndex = 9;
+            this.txtCarManufacturer.TabIndex = 1;
             // 
             // btnSubmit
             // 

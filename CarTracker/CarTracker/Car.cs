@@ -8,6 +8,18 @@ namespace CarTracker
 {
     class Car
     {
+        private static Car carObj = null;
+
+        public static Car GetInstance()
+        {
+            if (carObj == null)
+            {
+                carObj = new Car();
+            }
+            return carObj;
+        }
+
+        private Dictionary<int, Car> carDictionary = new Dictionary<int, Car>();
         private string _carModel;
 
         public string CarModel
@@ -43,6 +55,31 @@ namespace CarTracker
             get { return _carWorth; }
             set { _carWorth = value; }
         }
+
+        public void addCar(string carModel, string carManufacturer, int manufacturerYear, int vehicleNumber, double carPrice)
+        {
+            Car carObj = new Car();
+            carObj.CarModel = carModel;
+            carObj.CarManufacturer = carManufacturer;
+            carObj.CarManufaturerDate = manufacturerYear;
+            carObj.VehicleNumber = vehicleNumber;
+            carObj.CarWorth = carPrice;
+            carDictionary.Add(vehicleNumber, carObj);
+
+        }
+
+        public Car contains(int value)
+        {
+            if (carDictionary.ContainsKey(value))
+            {
+                return carDictionary[value];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
 
     }

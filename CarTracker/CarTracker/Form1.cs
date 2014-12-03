@@ -12,24 +12,26 @@ namespace CarTracker
 {
     public partial class frmMainForm : Form
     {
-        AddCar newCarForm = new AddCar();
-        CarFinder newSearchCar = new CarFinder();
+        
 
         public frmMainForm()
         {
             InitializeComponent();
         }
 
-        private void addCarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addCarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            newCarForm.Show();
+            AddCar newCarForm = new AddCar();
             newCarForm.MdiParent = this; 
+            newCarForm.Show();
+            
         }
 
-        private void searchCarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void carFinderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newSearchCar.Show();
+            CarFinder newSearchCar = new CarFinder();
             newSearchCar.MdiParent = this;
+            newSearchCar.Show();
         }
     }
 }
