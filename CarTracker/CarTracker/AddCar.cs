@@ -23,7 +23,7 @@ namespace CarTracker
             {
                 string carModel;
                 string carManufacturer;
-                string manufacturerYear;
+                int manufacturerYear;
                 int intConverter;
                 int vehicleNumber;
                 double doubleConverter;
@@ -48,15 +48,17 @@ namespace CarTracker
                 {
                     carManufacturer = txtCarManufacturer.Text;
                 }
-                //check manufacturerYear
-                if (txtManufacturingYear == null)
+                //parse manufacturerYear
+                if (int.TryParse(txtManufacturingYear.Text, out intConverter))
                 {
-                    MessageBox.Show("Please enter the Manufacturing Date");
-                    txtManufacturingYear.Focus();
+                    manufacturerYear = intConverter;
                 }
                 else
                 {
-                    manufacturerYear = txtManufacturingYear;
+                    MessageBox.Show("Please enter the Manufacturing Date");
+                    txtManufacturingYear.Text = String.Empty;
+                    txtManufacturingYear.Focus();
+                    return;
                 }
                 //parse value for vehicle number
                 if (int.TryParse(txtVehicleNumber.Text, out intConverter))
@@ -83,12 +85,26 @@ namespace CarTracker
                     txtCarPrice.Focus();
                     return;
                 }
+                clear();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
+        }
+        public void clear()
+        {
+            txtCarModel.Text = String.Empty;
+            txtCarManufacturer.Text = String.Empty;
+            txtCarPrice.Text = String.Empty;
+            txtVehicleNumber.Text = String.Empty;
+            txtManufacturingYear.Text = String.Empty;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clear();
         }
     }
 }
