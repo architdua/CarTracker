@@ -85,6 +85,7 @@ namespace CarTracker
                     txtCarPrice.Focus();
                     return;
                 }
+                //Dictionary <Car,
                 clear();
             }
             catch(Exception ex)

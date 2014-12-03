@@ -51,6 +51,12 @@
       <DependentUpon>AddCar.cs</DependentUpon>
     </Compile>
     <Compile Include="Car.cs" />
+    <Compile Include="CarFinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarFinder.Designer.cs">
+      <DependentUpon>CarFinder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddCar.resx">
       <DependentUpon>AddCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarFinder.resx">
+      <DependentUpon>CarFinder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

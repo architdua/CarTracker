@@ -55,8 +55,9 @@
             // searchCarToolStripMenuItem
             // 
             this.searchCarToolStripMenuItem.Name = "searchCarToolStripMenuItem";
-            this.searchCarToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.searchCarToolStripMenuItem.Text = "Search Car";
+            this.searchCarToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.searchCarToolStripMenuItem.Text = "Car Finder";
+            this.searchCarToolStripMenuItem.Click += new System.EventHandler(this.searchCarToolStripMenuItem_Click);
             // 
             // frmMainForm
             // 
