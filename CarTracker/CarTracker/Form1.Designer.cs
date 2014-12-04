@@ -32,6 +32,7 @@
             this.addCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.carFinderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,8 @@
             // 
             this.addCarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCarToolStripMenuItem1,
-            this.carFinderToolStripMenuItem});
+            this.carFinderToolStripMenuItem,
+            this.locationsToolStripMenuItem});
             this.addCarToolStripMenuItem.Name = "addCarToolStripMenuItem";
             this.addCarToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.addCarToolStripMenuItem.Text = "File";
@@ -67,6 +69,13 @@
             this.carFinderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.carFinderToolStripMenuItem.Text = "Car Finder";
             this.carFinderToolStripMenuItem.Click += new System.EventHandler(this.carFinderToolStripMenuItem_Click);
+            // 
+            // locationsToolStripMenuItem
+            // 
+            this.locationsToolStripMenuItem.Name = "locationsToolStripMenuItem";
+            this.locationsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.locationsToolStripMenuItem.Text = "Locations";
+            this.locationsToolStripMenuItem.Click += new System.EventHandler(this.locationsToolStripMenuItem_Click);
             // 
             // frmMainForm
             // 
@@ -91,6 +100,7 @@
         private System.Windows.Forms.ToolStripMenuItem addCarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addCarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem carFinderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem locationsToolStripMenuItem;
     }
 }
 

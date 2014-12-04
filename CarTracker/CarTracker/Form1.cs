@@ -33,5 +33,12 @@ namespace CarTracker
             newSearchCar.MdiParent = this;
             newSearchCar.Show();
         }
+
+        private void locationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Locations newLocations = new Locations();
+            newLocations.MdiParent = this;
+            newLocations.Show();
+        }
     }
 }
