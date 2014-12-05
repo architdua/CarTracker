@@ -33,7 +33,7 @@ namespace CarTracker
             locationsDataTable.Columns.Add(locationID);
 
             locationsDataTable.Columns.Add("Location Name", typeof(string));
-            locationsDataTable.Columns.Add("# of Parking Spots", typeof(int));
+            locationsDataTable.Columns.Add("Number of Parking Spots", typeof(int));
             locationsDataTable.Columns.Add("Location City", typeof(string));
         }
 
@@ -55,7 +55,7 @@ namespace CarTracker
                 }
                 DataRow newRow = locationsDataTable.NewRow();
                 newRow["Location Name"] = txtLocationName.Text;
-                newRow["# of Parking Spots"] = txtParkingSpots.Text;
+                newRow["Number of Parking Spots"] = txtParkingSpots.Text;
                 newRow["Location City"] = txtLocationCity.Text;
 
                 locationsDataTable.Rows.Add(newRow);

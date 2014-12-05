@@ -40,6 +40,10 @@
             this.lblLocationInfo = new System.Windows.Forms.Label();
             this.pnlTable = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clmLocationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLocationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNOfParkingSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLocationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlInfo.SuspendLayout();
             this.pnlTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -140,7 +144,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmLocationID,
+            this.clmLocationCity,
+            this.clmNOfParkingSpots,
+            this.clmLocationName});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.SkyBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -157,6 +169,34 @@
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(339, 353);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // clmLocationID
+            // 
+            this.clmLocationID.DataPropertyName = "Location ID";
+            this.clmLocationID.HeaderText = "Location ID";
+            this.clmLocationID.Name = "clmLocationID";
+            this.clmLocationID.ReadOnly = true;
+            // 
+            // clmLocationCity
+            // 
+            this.clmLocationCity.DataPropertyName = "Location City";
+            this.clmLocationCity.HeaderText = "Location City";
+            this.clmLocationCity.Name = "clmLocationCity";
+            this.clmLocationCity.ReadOnly = true;
+            // 
+            // clmNOfParkingSpots
+            // 
+            this.clmNOfParkingSpots.DataPropertyName = "Number of Parking Spots";
+            this.clmNOfParkingSpots.HeaderText = "# of Parking Spots";
+            this.clmNOfParkingSpots.Name = "clmNOfParkingSpots";
+            this.clmNOfParkingSpots.ReadOnly = true;
+            // 
+            // clmLocationName
+            // 
+            this.clmLocationName.DataPropertyName = "Location Name";
+            this.clmLocationName.HeaderText = "Location Name";
+            this.clmLocationName.Name = "clmLocationName";
+            this.clmLocationName.ReadOnly = true;
             // 
             // Locations
             // 
@@ -190,5 +230,9 @@
         private System.Windows.Forms.Label lblParkingSpots;
         private System.Windows.Forms.Label lblLocationName;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationCity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmNOfParkingSpots;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationName;
     }
 }
