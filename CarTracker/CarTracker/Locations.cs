@@ -69,6 +69,98 @@ namespace CarTracker
             }
         }
 
+        private void btnGetValues_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataRow [] selectedRows = locationsDataTable.Select("[Location Name] = '" + txtLocationName.Text + "'");
+                if (selectedRows.Length == 0)
+                {
+                    MessageBox.Show("No record found");
+                }
+                else
+                {
+                    foreach (DataRow selectedRow in selectedRows)
+                    {
+                        txtParkingSpots.Text = selectedRow["Number of Parking Spots"].ToString();
+                        txtParkingSpots.Refresh();
+                        txtLocationCity.Text = selectedRow["Location City"].ToString();
+                        txtLocationCity.Refresh();
+                        System.Threading.Thread.Sleep(3000);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataRow[] selectedRows = locationsDataTable.Select("[Location ID] = '" + "'");
+
+                if (selectedRows.Length == 0)
+                {
+                    MessageBox.Show("Record not found");
+                }
+                else
+                {
+                    selectedRows[0].Delete();
+                    dataGridView1.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+       
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataRow[] selectDataRows = locationsDataTable.Select("[Location ID] = '" + txtLocationName.Text + "'");
+                if (selectDataRows.Length == 0)
+                {
+                    MessageBox.Show("Record not found");
+                }
+                else
+                {
+                    selectDataRows[0]["Number of Parking Spots"] = txtParkingSpots.Text;
+                    selectDataRows[0]["LastName"] = txtLocationCity.Text;
+
+                    dataGridView1.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int locationID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["clmLocationID"].Value);
+
+            DataRow[] selectedRows = locationsDataTable.Select("[Location ID] = '" + locationID + "'");
+
+            if (selectedRows.Length == 0)
+            {
+                MessageBox.Show("Record selected not found");
+            }
+            else
+            {
+                txtLocationCity.Text = selectedRows[0]["Location Name"].ToString();
+                txtParkingSpots.Text = selectedRows[0]["Number of Parking Spots"].ToString();
+                txtLocationName.Text = selectedRows[0]["Location City"].ToString();
+            }
+        }
+
        
 
         

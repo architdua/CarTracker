@@ -30,6 +30,9 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlInfo = new System.Windows.Forms.Panel();
+            this.btnGetValues = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.txtParkingSpots = new System.Windows.Forms.TextBox();
             this.txtLocationCity = new System.Windows.Forms.TextBox();
@@ -41,9 +44,9 @@
             this.pnlTable = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.clmLocationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmLocationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNOfParkingSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmLocationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNOfParkingSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLocationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlInfo.SuspendLayout();
             this.pnlTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -51,6 +54,9 @@
             // 
             // pnlInfo
             // 
+            this.pnlInfo.Controls.Add(this.btnGetValues);
+            this.pnlInfo.Controls.Add(this.btnDelete);
+            this.pnlInfo.Controls.Add(this.btnUpdate);
             this.pnlInfo.Controls.Add(this.btnSubmit);
             this.pnlInfo.Controls.Add(this.txtParkingSpots);
             this.pnlInfo.Controls.Add(this.txtLocationCity);
@@ -65,9 +71,39 @@
             this.pnlInfo.Size = new System.Drawing.Size(236, 373);
             this.pnlInfo.TabIndex = 0;
             // 
+            // btnGetValues
+            // 
+            this.btnGetValues.Location = new System.Drawing.Point(125, 265);
+            this.btnGetValues.Name = "btnGetValues";
+            this.btnGetValues.Size = new System.Drawing.Size(75, 23);
+            this.btnGetValues.TabIndex = 7;
+            this.btnGetValues.Text = "Get Values";
+            this.btnGetValues.UseVisualStyleBackColor = true;
+            this.btnGetValues.Click += new System.EventHandler(this.btnGetValues_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(28, 265);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(125, 221);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(149, 221);
+            this.btnSubmit.Location = new System.Drawing.Point(28, 221);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 4;
@@ -87,7 +123,7 @@
             this.txtLocationCity.Location = new System.Drawing.Point(12, 177);
             this.txtLocationCity.Name = "txtLocationCity";
             this.txtLocationCity.Size = new System.Drawing.Size(212, 20);
-            this.txtLocationCity.TabIndex = 3;
+            this.txtLocationCity.TabIndex = 2;
             // 
             // lblLocationCity
             // 
@@ -150,9 +186,9 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmLocationID,
-            this.clmLocationCity,
+            this.clmLocationName,
             this.clmNOfParkingSpots,
-            this.clmLocationName});
+            this.clmLocationCity});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.SkyBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -169,6 +205,7 @@
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(339, 353);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // clmLocationID
             // 
@@ -177,12 +214,12 @@
             this.clmLocationID.Name = "clmLocationID";
             this.clmLocationID.ReadOnly = true;
             // 
-            // clmLocationCity
+            // clmLocationName
             // 
-            this.clmLocationCity.DataPropertyName = "Location City";
-            this.clmLocationCity.HeaderText = "Location City";
-            this.clmLocationCity.Name = "clmLocationCity";
-            this.clmLocationCity.ReadOnly = true;
+            this.clmLocationName.DataPropertyName = "Location Name";
+            this.clmLocationName.HeaderText = "Location Name";
+            this.clmLocationName.Name = "clmLocationName";
+            this.clmLocationName.ReadOnly = true;
             // 
             // clmNOfParkingSpots
             // 
@@ -191,12 +228,12 @@
             this.clmNOfParkingSpots.Name = "clmNOfParkingSpots";
             this.clmNOfParkingSpots.ReadOnly = true;
             // 
-            // clmLocationName
+            // clmLocationCity
             // 
-            this.clmLocationName.DataPropertyName = "Location Name";
-            this.clmLocationName.HeaderText = "Location Name";
-            this.clmLocationName.Name = "clmLocationName";
-            this.clmLocationName.ReadOnly = true;
+            this.clmLocationCity.DataPropertyName = "Location City";
+            this.clmLocationCity.HeaderText = "Location City";
+            this.clmLocationCity.Name = "clmLocationCity";
+            this.clmLocationCity.ReadOnly = true;
             // 
             // Locations
             // 
@@ -230,9 +267,12 @@
         private System.Windows.Forms.Label lblParkingSpots;
         private System.Windows.Forms.Label lblLocationName;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnGetValues;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmNOfParkingSpots;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmNOfParkingSpots;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationCity;
     }
 }

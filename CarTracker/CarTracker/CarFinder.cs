@@ -44,6 +44,7 @@ namespace CarTracker
                 else
                 {
                     MessageBox.Show("There is no car in the system with that Vehicle Number");
+                    clear();   
                 }
 
             }
@@ -52,6 +53,14 @@ namespace CarTracker
                 MessageBox.Show(ex.Message);
             }
             
+        }
+        private void clear()
+        {
+            txtRequestVehicleNumber.Text = String.Empty;
+            txtDisplayCarManufacturer.Text = String.Empty;
+            txtDisplayCarModel.Text = String.Empty;
+            txtDisplayCarPrice.Text = String.Empty;
+            txtDisplayManufacturingYear.Text = String.Empty;
         }
     }
 }
