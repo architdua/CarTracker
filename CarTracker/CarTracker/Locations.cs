@@ -52,6 +52,8 @@ namespace CarTracker
                 else
                 {
                     MessageBox.Show(txtParkingSpots.Text + " is not a valid input. Please enter an integer value");
+                    txtParkingSpots.Focus();
+                    return;
                 }
                 DataRow newRow = locationsDataTable.NewRow();
                 newRow["Location Name"] = txtLocationName.Text;
@@ -59,7 +61,7 @@ namespace CarTracker
                 newRow["Location City"] = txtLocationCity.Text;
 
                 locationsDataTable.Rows.Add(newRow);
-
+                clear();
                 dataGridView1.DataSource = locationsDataTable;
 
             }
@@ -161,7 +163,12 @@ namespace CarTracker
             }
         }
 
-       
+        private void clear()
+        {
+            txtLocationCity.Text = String.Empty;
+            txtLocationName.Text = String.Empty;
+            txtLocationName.Text = String.Empty;
+        }
 
         
 
