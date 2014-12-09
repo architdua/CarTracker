@@ -13,6 +13,7 @@ namespace CarTracker
     public partial class Locations : Form
     {
         DataTable locationsDataTable = new DataTable();
+        int locationID = -1;
         public Locations()
         {
             InitializeComponent();
@@ -102,16 +103,18 @@ namespace CarTracker
         {
             try
             {
-                DataRow[] selectedRows = locationsDataTable.Select("[Location ID] = '" + "'");
+                DataRow[] selectedRows = locationsDataTable.Select("[Location ID] = '" + locationID + "'");
 
                 if (selectedRows.Length == 0)
                 {
                     MessageBox.Show("Record not found");
+                    return;
                 }
                 else
                 {
                     selectedRows[0].Delete();
                     dataGridView1.Refresh();
+                    clear();
                 }
             }
             catch (Exception ex)
@@ -126,7 +129,7 @@ namespace CarTracker
         {
             try
             {
-                DataRow[] selectDataRows = locationsDataTable.Select("[Location ID] = '" + txtLocationName.Text + "'");
+                DataRow[] selectDataRows = locationsDataTable.Select("[Location ID] = '" + locationID + "'");
                 if (selectDataRows.Length == 0)
                 {
                     MessageBox.Show("Record not found");
@@ -134,9 +137,10 @@ namespace CarTracker
                 else
                 {
                     selectDataRows[0]["Number of Parking Spots"] = txtParkingSpots.Text;
-                    selectDataRows[0]["LastName"] = txtLocationCity.Text;
+                    selectDataRows[0]["Location City"] = txtLocationCity.Text;
 
                     dataGridView1.Refresh();
+                    clear();
                 }
             }
             catch (Exception ex)
@@ -147,7 +151,11 @@ namespace CarTracker
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int locationID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["clmLocationID"].Value);
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+            locationID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["clmLocationID"].Value);
 
             DataRow[] selectedRows = locationsDataTable.Select("[Location ID] = '" + locationID + "'");
 
@@ -157,9 +165,9 @@ namespace CarTracker
             }
             else
             {
-                txtLocationCity.Text = selectedRows[0]["Location Name"].ToString();
+                txtLocationCity.Text = selectedRows[0]["Location City"].ToString();
                 txtParkingSpots.Text = selectedRows[0]["Number of Parking Spots"].ToString();
-                txtLocationName.Text = selectedRows[0]["Location City"].ToString();
+                txtLocationName.Text = selectedRows[0]["Location Name"].ToString();
             }
         }
 
@@ -167,7 +175,8 @@ namespace CarTracker
         {
             txtLocationCity.Text = String.Empty;
             txtLocationName.Text = String.Empty;
-            txtLocationName.Text = String.Empty;
+            txtParkingSpots.Text = String.Empty;
+            locationID = -1;
         }
 
         
