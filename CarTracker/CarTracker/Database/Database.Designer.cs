@@ -31,10 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTable = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clmLocationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmLocationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNOfParkingSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmLocationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.btnGetValues = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -47,6 +43,10 @@
             this.lblParkingSpots = new System.Windows.Forms.Label();
             this.lblLocationName = new System.Windows.Forms.Label();
             this.lblLocationInfo = new System.Windows.Forms.Label();
+            this.clmLocationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLocationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNOfParkingSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLocationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlInfo.SuspendLayout();
@@ -89,34 +89,6 @@
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(434, 349);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // clmLocationID
-            // 
-            this.clmLocationID.DataPropertyName = "Location ID";
-            this.clmLocationID.HeaderText = "Location ID";
-            this.clmLocationID.Name = "clmLocationID";
-            this.clmLocationID.ReadOnly = true;
-            // 
-            // clmLocationName
-            // 
-            this.clmLocationName.DataPropertyName = "Location Name";
-            this.clmLocationName.HeaderText = "Location Name";
-            this.clmLocationName.Name = "clmLocationName";
-            this.clmLocationName.ReadOnly = true;
-            // 
-            // clmNOfParkingSpots
-            // 
-            this.clmNOfParkingSpots.DataPropertyName = "Number of Parking Spots";
-            this.clmNOfParkingSpots.HeaderText = "# of Parking Spots";
-            this.clmNOfParkingSpots.Name = "clmNOfParkingSpots";
-            this.clmNOfParkingSpots.ReadOnly = true;
-            // 
-            // clmLocationCity
-            // 
-            this.clmLocationCity.DataPropertyName = "Location City";
-            this.clmLocationCity.HeaderText = "Location City";
-            this.clmLocationCity.Name = "clmLocationCity";
-            this.clmLocationCity.ReadOnly = true;
             // 
             // pnlInfo
             // 
@@ -230,6 +202,34 @@
             this.lblLocationInfo.TabIndex = 0;
             this.lblLocationInfo.Text = "Location Information:";
             // 
+            // clmLocationID
+            // 
+            this.clmLocationID.DataPropertyName = "Location ID";
+            this.clmLocationID.HeaderText = "Location ID";
+            this.clmLocationID.Name = "clmLocationID";
+            this.clmLocationID.ReadOnly = true;
+            // 
+            // clmLocationName
+            // 
+            this.clmLocationName.DataPropertyName = "Location Name";
+            this.clmLocationName.HeaderText = "Location Name";
+            this.clmLocationName.Name = "clmLocationName";
+            this.clmLocationName.ReadOnly = true;
+            // 
+            // clmNOfParkingSpots
+            // 
+            this.clmNOfParkingSpots.DataPropertyName = "Parking Spots";
+            this.clmNOfParkingSpots.HeaderText = "Parking Spots";
+            this.clmNOfParkingSpots.Name = "clmNOfParkingSpots";
+            this.clmNOfParkingSpots.ReadOnly = true;
+            // 
+            // clmLocationCity
+            // 
+            this.clmLocationCity.DataPropertyName = "Location City";
+            this.clmLocationCity.HeaderText = "Location City";
+            this.clmLocationCity.Name = "clmLocationCity";
+            this.clmLocationCity.ReadOnly = true;
+            // 
             // frmDatabase
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -240,6 +240,7 @@
             this.Name = "frmDatabase";
             this.Text = "Locations Database";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmDatabase_Load);
             this.pnlTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlInfo.ResumeLayout(false);
@@ -252,10 +253,6 @@
 
         private System.Windows.Forms.Panel pnlTable;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmNOfParkingSpots;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationCity;
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Button btnGetValues;
         private System.Windows.Forms.Button btnDelete;
@@ -268,5 +265,9 @@
         private System.Windows.Forms.Label lblParkingSpots;
         private System.Windows.Forms.Label lblLocationName;
         private System.Windows.Forms.Label lblLocationInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmNOfParkingSpots;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationCity;
     }
 }
