@@ -40,5 +40,12 @@ namespace CarTracker
             newLocations.MdiParent = this;
             newLocations.Show();
         }
+
+        private void locationsDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Database.frmDatabase newLocationDB = new Database.frmDatabase();
+            newLocationDB.MdiParent = this;
+            newLocationDB.Show();
+        }
     }
 }

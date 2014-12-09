@@ -33,6 +33,7 @@
             this.addCarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.carFinderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.locationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.locationsDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,8 @@
             this.addCarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addCarToolStripMenuItem1,
             this.carFinderToolStripMenuItem,
-            this.locationsToolStripMenuItem});
+            this.locationsToolStripMenuItem,
+            this.locationsDatabaseToolStripMenuItem});
             this.addCarToolStripMenuItem.Name = "addCarToolStripMenuItem";
             this.addCarToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.addCarToolStripMenuItem.Text = "File";
@@ -59,23 +61,30 @@
             // addCarToolStripMenuItem1
             // 
             this.addCarToolStripMenuItem1.Name = "addCarToolStripMenuItem1";
-            this.addCarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.addCarToolStripMenuItem1.Size = new System.Drawing.Size(176, 22);
             this.addCarToolStripMenuItem1.Text = "Add Car";
             this.addCarToolStripMenuItem1.Click += new System.EventHandler(this.addCarToolStripMenuItem1_Click);
             // 
             // carFinderToolStripMenuItem
             // 
             this.carFinderToolStripMenuItem.Name = "carFinderToolStripMenuItem";
-            this.carFinderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.carFinderToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.carFinderToolStripMenuItem.Text = "Car Finder";
             this.carFinderToolStripMenuItem.Click += new System.EventHandler(this.carFinderToolStripMenuItem_Click);
             // 
             // locationsToolStripMenuItem
             // 
             this.locationsToolStripMenuItem.Name = "locationsToolStripMenuItem";
-            this.locationsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.locationsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.locationsToolStripMenuItem.Text = "Locations";
             this.locationsToolStripMenuItem.Click += new System.EventHandler(this.locationsToolStripMenuItem_Click);
+            // 
+            // locationsDatabaseToolStripMenuItem
+            // 
+            this.locationsDatabaseToolStripMenuItem.Name = "locationsDatabaseToolStripMenuItem";
+            this.locationsDatabaseToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.locationsDatabaseToolStripMenuItem.Text = "Locations Database";
+            this.locationsDatabaseToolStripMenuItem.Click += new System.EventHandler(this.locationsDatabaseToolStripMenuItem_Click);
             // 
             // frmMainForm
             // 
@@ -101,6 +110,7 @@
         private System.Windows.Forms.ToolStripMenuItem addCarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem carFinderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem locationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem locationsDatabaseToolStripMenuItem;
     }
 }
 
