@@ -18,6 +18,7 @@ namespace CarTracker.Database
             InitializeComponent();
         }
         string connectionString = "Server=ARCHIT;Database=Sample;Trusted_Connection=True";
+        int locationID = -1;
         private void getDataFromDB()
         {
             SqlConnection sqlConn = null;
@@ -103,6 +104,18 @@ namespace CarTracker.Database
             txtLocationName.Text = String.Empty;
             txtParkingSpots.Text = String.Empty;
             txtLocationCity.Text = String.Empty;
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+            DataGridViewRow row = dataGridView1.CurrentRow;
+            txtLocationName.Text = row.Cells["clmLocationName"].Value.ToString();
+            txtParkingSpots.Text = row.Cells["clmParkingSpots"].Value.ToString();
+            txtLocationCity.Text = row.Cells["clmLocationCity"].Value.ToString();
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTable = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pnlInfo = new System.Windows.Forms.Panel();
@@ -45,7 +45,7 @@
             this.lblLocationInfo = new System.Windows.Forms.Label();
             this.clmLocationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmLocationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNOfParkingSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmParkingSpots = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmLocationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,16 +71,16 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmLocationID,
             this.clmLocationName,
-            this.clmNOfParkingSpots,
+            this.clmParkingSpots,
             this.clmLocationCity});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 10);
             this.dataGridView1.Name = "dataGridView1";
@@ -89,6 +89,7 @@
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(434, 349);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // pnlInfo
             // 
@@ -217,12 +218,12 @@
             this.clmLocationName.Name = "clmLocationName";
             this.clmLocationName.ReadOnly = true;
             // 
-            // clmNOfParkingSpots
+            // clmParkingSpots
             // 
-            this.clmNOfParkingSpots.DataPropertyName = "Parking Spots";
-            this.clmNOfParkingSpots.HeaderText = "Parking Spots";
-            this.clmNOfParkingSpots.Name = "clmNOfParkingSpots";
-            this.clmNOfParkingSpots.ReadOnly = true;
+            this.clmParkingSpots.DataPropertyName = "Parking Spots";
+            this.clmParkingSpots.HeaderText = "Parking Spots";
+            this.clmParkingSpots.Name = "clmParkingSpots";
+            this.clmParkingSpots.ReadOnly = true;
             // 
             // clmLocationCity
             // 
@@ -268,7 +269,7 @@
         private System.Windows.Forms.Label lblLocationInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationID;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmNOfParkingSpots;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmParkingSpots;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLocationCity;
     }
 }
