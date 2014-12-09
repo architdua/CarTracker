@@ -69,7 +69,7 @@ namespace CarTracker.Database
             // refresh Data from DB
             getDataFromDB();
         }
-        private void addLocation(string locationName, string parkingSpots, string LocationCity)
+        private void addLocation(string locationName, string parkingSpots, string locationCity)
         {
             SqlConnection sqlConn = null;
             try
@@ -80,7 +80,7 @@ namespace CarTracker.Database
                 //Open SQL Connection
                 sqlConn.Open();
                 string stringCommand = "INSERT INTO LOCATIONS([Location Name],[Parking Spots],[Location City])" +
-                    "Values('" + locationName + "' ,'" + parkingSpots + "' ,'" + LocationCity + "')";
+                    "Values('" + locationName + "' ,'" + parkingSpots + "' ,'" + locationCity + "')";
 
                 SqlCommand sqlCommand = sqlConn.CreateCommand();
                 sqlCommand.CommandText = stringCommand;
@@ -104,6 +104,7 @@ namespace CarTracker.Database
             txtLocationName.Text = String.Empty;
             txtParkingSpots.Text = String.Empty;
             txtLocationCity.Text = String.Empty;
+            locationID = -1;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -116,6 +117,52 @@ namespace CarTracker.Database
             txtLocationName.Text = row.Cells["clmLocationName"].Value.ToString();
             txtParkingSpots.Text = row.Cells["clmParkingSpots"].Value.ToString();
             txtLocationCity.Text = row.Cells["clmLocationCity"].Value.ToString();
+            locationID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["clmLocationID"].Value);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            updateLocation(txtLocationName.Text, txtParkingSpots.Text, txtLocationCity.Text);
+            // refresh Data from DB
+            getDataFromDB();
+
+        }
+        private void updateLocation(string locationName, string parkingSpots, string locationCity)
+        {
+            SqlConnection sqlConn = null;
+            try
+            {
+                sqlConn = new SqlConnection();
+                sqlConn.ConnectionString = connectionString;
+                //Open SQL Connection
+                sqlConn.Open();
+                if (locationID > 0)
+                {
+                    string stringCommand = "UPDATE LOCATIONS"  +
+                        " SET [Location Name] = '" + locationName + "'" + "," + "[Parking Spots] = '" + parkingSpots + "'" + "," +
+                            "[Location City] = '" + locationCity + "'" +
+                        " WHERE [location ID] = " + locationID;
+                    SqlCommand sqlCommand = sqlConn.CreateCommand();
+                    sqlCommand.CommandText = stringCommand;
+
+                    sqlCommand.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a query");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Close SQL Connection
+                sqlConn.Close();
+                clearTextFields();
+            }
         }
     }
 }
