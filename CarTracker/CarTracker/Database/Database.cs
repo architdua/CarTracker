@@ -48,6 +48,7 @@ namespace CarTracker.Database
             {
                 if (sqlConn != null)
                 {
+                    // Close SQL Connection
                     sqlConn.Close();
                 }
             }
@@ -58,6 +59,50 @@ namespace CarTracker.Database
         {
             // refresh Data from DB
             getDataFromDB();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            addLocation(txtLocationName.Text, txtParkingSpots.Text, txtLocationCity.Text);
+
+            // refresh Data from DB
+            getDataFromDB();
+        }
+        private void addLocation(string locationName, string parkingSpots, string LocationCity)
+        {
+            SqlConnection sqlConn = null;
+            try
+            {
+                sqlConn = new SqlConnection();
+                sqlConn.ConnectionString = connectionString;
+                
+                //Open SQL Connection
+                sqlConn.Open();
+                string stringCommand = "INSERT INTO LOCATIONS([Location Name],[Parking Spots],[Location City])" +
+                    "Values('" + locationName + "' ,'" + parkingSpots + "' ,'" + LocationCity + "')";
+
+                SqlCommand sqlCommand = sqlConn.CreateCommand();
+                sqlCommand.CommandText = stringCommand;
+
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Close SQL Connection
+                sqlConn.Close();
+                clearTextFields();
+            }
+
+        }
+        private void clearTextFields()
+        {
+            txtLocationName.Text = String.Empty;
+            txtParkingSpots.Text = String.Empty;
+            txtLocationCity.Text = String.Empty;
         }
     }
 }
