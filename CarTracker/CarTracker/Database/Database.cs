@@ -164,5 +164,48 @@ namespace CarTracker.Database
                 clearTextFields();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            deleteLocation();
+            // refresh Data from DB
+            getDataFromDB();
+        }
+
+        private void deleteLocation()
+        {
+            SqlConnection sqlConn = null;
+            try
+            {
+                sqlConn = new SqlConnection();
+                sqlConn.ConnectionString = connectionString;
+                //Open SQL Connection
+                sqlConn.Open();
+                if (locationID > 0)
+                {
+                    string stringCommand = "DELETE FROM LOCATIONS" +
+                        " WHERE [Location ID] = " + locationID;
+                    SqlCommand sqlCommand = sqlConn.CreateCommand();
+                    sqlCommand.CommandText = stringCommand;
+
+                    sqlCommand.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Please select a query");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Close SQL Connection
+                sqlConn.Close();
+                clearTextFields();
+            }
+        }
     }
 }
