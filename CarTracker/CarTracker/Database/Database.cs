@@ -262,24 +262,28 @@ namespace CarTracker.Database
                 sqlConn.ConnectionString = connectionString;
                 //Open SQL Connection
                 sqlConn.Open();
-                if (locationID > 0)
+                
+                SqlCommand sqlCommand = sqlConn.CreateCommand();
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.CommandText = "usp_get_location";
+
+                //Add Parameters for stored procedure
+                sqlCommand.Parameters.AddWithValue(@"LocationName", locationName);
+                sqlCommand.Parameters.Add("@ReturnResult", SqlDbType.NVarChar, 50).Direction = ParameterDirection.Output;
+                sqlCommand.Parameters.Add("@ReturnLocationCity", SqlDbType.NVarChar, 50).Direction = ParameterDirection.Output;
+                sqlCommand.Parameters.Add("@ReturnParkingSpots", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                sqlCommand.ExecuteNonQuery();
+
+                if (sqlCommand.Parameters["@ReturnResult"].Value.ToString().Length > 0)
                 {
-                    string stringCommand = "SELECT [Location City], [Parking Spots] " +
-                        "FROM LOCATIONS" +
-                        " WHERE [Location Name] = '" + locationName + "'";
-
-                    SqlCommand sqlCommand = sqlConn.CreateCommand();
-                    sqlCommand.CommandText = stringCommand;
-
-                    sqlCommand.ExecuteNonQuery();
-
-                   // txtParkingSpots.Text = 
+                   MessageBox.Show(sqlCommand.Parameters["@ReturnResult"].Value.ToString());
+                   return;
                 }
-                else
-                {
-                    MessageBox.Show("Query does not exist");
-                }
-
+               // MessageBox.Show(sqlCommand.Parameters["@ReturnParkingSpots"].Value.ToString());
+                //MessageBox.Show(sqlCommand.Parameters["@ReturnLocationCity"].Value.ToString());
+                txtParkingSpots.Text = sqlCommand.Parameters["@ReturnParkingSpots"].Value.ToString();
+                txtLocationCity.Text = sqlCommand.Parameters["@ReturnLocationCity"].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -289,7 +293,6 @@ namespace CarTracker.Database
             {
                 // Close SQL Connection
                 sqlConn.Close();
-                clearTextFields();
             }
         }
     }
