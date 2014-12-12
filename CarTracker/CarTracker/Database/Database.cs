@@ -215,10 +215,18 @@ namespace CarTracker.Database
                 sqlConn.Open();
                 if (locationID > 0)
                 {
-                    string stringCommand = "DELETE FROM LOCATIONS" +
-                        " WHERE [Location ID] = " + locationID;
+                    //Update for stored procedure
+                    //string stringCommand = "DELETE FROM LOCATIONS" +
+                    //    " WHERE [Location ID] = " + locationID;
+                    //SqlCommand sqlCommand = sqlConn.CreateCommand();
+                    //sqlCommand.CommandText = stringCommand;
+
                     SqlCommand sqlCommand = sqlConn.CreateCommand();
-                    sqlCommand.CommandText = stringCommand;
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.CommandText = "usp_delete_location";
+
+                    //Add Parameters for stored procedure
+                    sqlCommand.Parameters.AddWithValue(@"LocationID", locationID);
 
                     sqlCommand.ExecuteNonQuery();
                 }
