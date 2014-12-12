@@ -64,12 +64,39 @@ namespace CarTracker.Database
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            addLocation(txtLocationName.Text, txtParkingSpots.Text, txtLocationCity.Text);
+            int intConverter; 
+            int parkingSpots;
+            
+            if (txtLocationName.Text == String.Empty)
+            {
+                MessageBox.Show("Please enter a value for the Location Name");
+                txtLocationName.Focus();
+                return;
+            }
+            if (txtLocationCity.Text == String.Empty)
+            {
+                MessageBox.Show("Please enter a value for the Location City");
+                txtLocationCity.Focus();
+                return;
+            }
+            if (int.TryParse(txtParkingSpots.Text, out intConverter))
+            {
+                parkingSpots = intConverter;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid number for the number of parking spots for the location");
+                txtParkingSpots.Text = String.Empty;
+                txtParkingSpots.Focus();
+                return;
+            }
+
+            addLocation(txtLocationName.Text, parkingSpots, txtLocationCity.Text);
 
             // refresh Data from DB
             getDataFromDB();
         }
-        private void addLocation(string locationName, string parkingSpots, string locationCity)
+        private void addLocation(string locationName, int parkingSpots, string locationCity)
         {
             SqlConnection sqlConn = null;
             try
@@ -143,12 +170,38 @@ namespace CarTracker.Database
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            updateLocation(txtLocationName.Text, txtParkingSpots.Text, txtLocationCity.Text);
+            int intConverter;
+            int parkingSpots;
+
+            if (txtLocationName.Text == String.Empty)
+            {
+                MessageBox.Show("Please enter a value for the Location Name");
+                txtLocationName.Focus();
+                return;
+            }
+            if (txtLocationCity.Text == String.Empty)
+            {
+                MessageBox.Show("Please enter a value for the Location City");
+                txtLocationCity.Focus();
+                return;
+            }
+            if (int.TryParse(txtParkingSpots.Text, out intConverter))
+            {
+                parkingSpots = intConverter;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid number for the number of parking spots for the location");
+                txtParkingSpots.Text = String.Empty;
+                txtParkingSpots.Focus();
+                return;
+            }
+            updateLocation(txtLocationName.Text, parkingSpots, txtLocationCity.Text);
             // refresh Data from DB
             getDataFromDB();
 
         }
-        private void updateLocation(string locationName, string parkingSpots, string locationCity)
+        private void updateLocation(string locationName, int parkingSpots, string locationCity)
         {
             SqlConnection sqlConn = null;
             try
@@ -250,6 +303,12 @@ namespace CarTracker.Database
 
         private void btnGetValues_Click(object sender, EventArgs e)
         {
+            if (txtLocationName.Text == String.Empty)
+            {
+                MessageBox.Show("Please enter a value for the Location Name");
+                txtLocationName.Focus();
+                return;
+            }
             getValues(txtLocationName.Text);
         }
 
