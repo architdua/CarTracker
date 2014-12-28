@@ -34,7 +34,7 @@ namespace CarTracker.Data
             return true;
         }
 
-        public int ExecuteNonQuery (string pQueryStatement)
+        public int executeNonQuery (string pQueryStatement)
         {
             try 
             {
@@ -48,7 +48,7 @@ namespace CarTracker.Data
                 closeConnection();
             }
         }
-        public DataSet ExecuteQuery(string pQueryStatement)
+        public DataSet executeQuery(string pQueryStatement)
         {
             try
             {
@@ -63,6 +63,36 @@ namespace CarTracker.Data
                 closeConnection();
             }
 
+        }
+
+        public string ExecuteStoredProcedure(string pStoredProcedure, Dictionary<string, string> pInputParameters, Dictionary<string, int> pOutputParameters)
+        {
+            try
+            {
+                createConnection();
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.CommandText = pStoredProcedure; 
+
+                foreach(KeyValuePair<string, string> entry in pInputParameters)
+                {
+                    sqlCommand.Parameters.AddWithValue(entry.Key, entry.Value);
+                }
+                foreach (KeyValuePair<string, int> entry in pOutputParameters)
+                {
+                    sqlCommand.Parameters.Add(entry.Key, SqlDbType.NVarChar, entry.Value);
+                }
+                sqlCommand.ExecuteNonQuery();
+                if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
+                {
+                   return sqlCommand.Parameters["@Result"].Value.ToString();
+                }
+                return null; 
+            }
+            finally
+            {
+                closeConnection();
+            }
         }
     }
 }

@@ -15,7 +15,18 @@ namespace CarTracker.Domain
         public DataSet getDataFromDB()
         {
             string stringCmd = "SELECT * FROM LOCATIONS";
-            return objDBOperations.ExecuteQuery(stringCmd);
+            return objDBOperations.executeQuery(stringCmd);
+        }
+        public string addLocation(string locationName, int parkingSpots, string locationCity)
+        {
+            string storedProcedure = "usp_add_location";
+            Dictionary<string, string> inputParameters = new Dictionary<string, string>();
+            inputParameters.Add(@"""@LocationName""", locationName);
+            inputParameters.Add(@"""@ParkingSpots""", parkingSpots.ToString());
+            inputParameters.Add(@"""@LocationCity""", locationCity);
+            Dictionary<string, int> outputParameters = new Dictionary<string, int>();
+            outputParameters.Add(@"""@Result""", 100);
+            return objDBOperations.ExecuteStoredProcedure(storedProcedure, inputParameters, outputParameters);
         }
     }
 }

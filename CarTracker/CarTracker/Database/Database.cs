@@ -113,42 +113,13 @@ namespace CarTracker.Database
         }
         private void addLocation(string locationName, int parkingSpots, string locationCity)
         {
-            SqlConnection sqlConn = null;
             try
             {
-                sqlConn = new SqlConnection();
-                sqlConn.ConnectionString = connectionString;
-                
-                //Open SQL Connection
-                sqlConn.Open();
-
-                //Commented to implement stored procedure
-                //string stringCommand = "INSERT INTO LOCATIONS([Location Name],[Parking Spots],[Location City])" +
-                   // "Values('" + locationName + "' ,'" + parkingSpots + "' ,'" + locationCity + "')";
-
-               // SqlCommand sqlCommand = sqlConn.CreateCommand();
-               // sqlCommand.CommandText = stringCommand;
-
-                // implement stored procedure
-                SqlCommand sqlCommand = sqlConn.CreateCommand();
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.CommandText = "usp_add_location";
-                
-                //add parameters with values
-                sqlCommand.Parameters.AddWithValue("@LocationName", txtLocationName.Text);
-                sqlCommand.Parameters.AddWithValue("@ParkingSpots", txtParkingSpots.Text);
-                sqlCommand.Parameters.AddWithValue("@LocationCity", txtLocationCity.Text);
-
-                //add output parameters
-                sqlCommand.Parameters.Add("@Result", SqlDbType.NVarChar, 100).Direction = ParameterDirection.Output;
-
-                sqlCommand.ExecuteNonQuery();
-                //get result from stored procedure
-                if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
+                string output = objDBStudentDetails.addLocation(locationName, parkingSpots, locationCity);
+                if (output != null)
                 {
-                    MessageBox.Show(sqlCommand.Parameters["@Result"].Value.ToString());
+                    MessageBox.Show(output);
                 }
-                
             }
             catch (Exception ex)
             {
@@ -156,12 +127,60 @@ namespace CarTracker.Database
             }
             finally
             {
-                // Close SQL Connection
-                sqlConn.Close();
                 clearTextFields();
             }
-
         }
+        //private void addLocation(string locationName, int parkingSpots, string locationCity)
+        //{
+        //    SqlConnection sqlConn = null;
+        //    try
+        //    {
+        //        sqlConn = new SqlConnection();
+        //        sqlConn.ConnectionString = connectionString;
+                
+        //        //Open SQL Connection
+        //        sqlConn.Open();
+
+        //        //Commented to implement stored procedure
+        //        //string stringCommand = "INSERT INTO LOCATIONS([Location Name],[Parking Spots],[Location City])" +
+        //           // "Values('" + locationName + "' ,'" + parkingSpots + "' ,'" + locationCity + "')";
+
+        //       // SqlCommand sqlCommand = sqlConn.CreateCommand();
+        //       // sqlCommand.CommandText = stringCommand;
+
+        //        // implement stored procedure
+        //        SqlCommand sqlCommand = sqlConn.CreateCommand();
+        //        sqlCommand.CommandType = CommandType.StoredProcedure;
+        //        sqlCommand.CommandText = "usp_add_location";
+                
+        //        //add parameters with values
+        //        sqlCommand.Parameters.AddWithValue("@LocationName", txtLocationName.Text);
+        //        sqlCommand.Parameters.AddWithValue("@ParkingSpots", txtParkingSpots.Text);
+        //        sqlCommand.Parameters.AddWithValue("@LocationCity", txtLocationCity.Text);
+
+        //        //add output parameters
+        //        sqlCommand.Parameters.Add("@Result", SqlDbType.NVarChar, 100).Direction = ParameterDirection.Output;
+
+        //        sqlCommand.ExecuteNonQuery();
+        //        //get result from stored procedure
+        //        if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
+        //        {
+        //            MessageBox.Show(sqlCommand.Parameters["@Result"].Value.ToString());
+        //        }
+                
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        // Close SQL Connection
+        //        sqlConn.Close();
+        //        clearTextFields();
+        //    }
+
+        //}
         private void clearTextFields()
         {
             txtLocationName.Text = String.Empty;
