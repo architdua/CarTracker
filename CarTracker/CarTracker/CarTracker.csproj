@@ -114,6 +114,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarTracker.Data\CarTracker.Data.csproj">
+      <Project>{831d440f-47b4-474f-9425-bcbdbe175739}</Project>
+      <Name>CarTracker.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarTracker.Domain\CarTracker.Domain.csproj">
+      <Project>{497d6af6-d8cd-47d5-b3c3-3b830ac7716b}</Project>
+      <Name>CarTracker.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

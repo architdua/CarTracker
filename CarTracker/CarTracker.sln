@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTracker", "CarTracker\CarTracker.csproj", "{0AC0E5B3-9593-4417-8960-5953FE0C6FB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTracker.Data", "CarTracker.Data\CarTracker.Data.csproj", "{831D440F-47B4-474F-9425-BCBDBE175739}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarTracker.Domain", "CarTracker.Domain\CarTracker.Domain.csproj", "{497D6AF6-D8CD-47D5-B3C3-3B830AC7716B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{0AC0E5B3-9593-4417-8960-5953FE0C6FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AC0E5B3-9593-4417-8960-5953FE0C6FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AC0E5B3-9593-4417-8960-5953FE0C6FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831D440F-47B4-474F-9425-BCBDBE175739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831D440F-47B4-474F-9425-BCBDBE175739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831D440F-47B4-474F-9425-BCBDBE175739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831D440F-47B4-474F-9425-BCBDBE175739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497D6AF6-D8CD-47D5-B3C3-3B830AC7716B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497D6AF6-D8CD-47D5-B3C3-3B830AC7716B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497D6AF6-D8CD-47D5-B3C3-3B830AC7716B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497D6AF6-D8CD-47D5-B3C3-3B830AC7716B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
