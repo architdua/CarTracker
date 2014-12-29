@@ -70,7 +70,7 @@ namespace CarTracker.Data
             try
             {
                 createConnection();
-                SqlCommand sqlCommand = new SqlCommand();
+                SqlCommand sqlCommand = sqlConn.CreateCommand();
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.CommandText = pStoredProcedure; 
 
@@ -80,7 +80,7 @@ namespace CarTracker.Data
                 }
                 foreach (KeyValuePair<string, int> entry in pOutputParameters)
                 {
-                    sqlCommand.Parameters.Add(entry.Key, SqlDbType.NVarChar, entry.Value);
+                    sqlCommand.Parameters.Add(entry.Key, SqlDbType.NVarChar, entry.Value).Direction = ParameterDirection.Output;
                 }
                 sqlCommand.ExecuteNonQuery();
                 if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
