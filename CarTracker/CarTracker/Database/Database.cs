@@ -22,42 +22,7 @@ namespace CarTracker.Database
         private CarTracker.Domain.ClsLocationDetails objDBStudentDetails = new ClsLocationDetails();
         int locationID = -1;
 
-        //private void getDataFromDB()
-        //{
-        //    SqlConnection sqlConn = null;
-        //    try
-        //    {
-        //        sqlConn = new SqlConnection();
-        //        sqlConn.ConnectionString = connectionString;
-
-        //        //Open SQL Connection
-        //        sqlConn.Open();
-
-        //        string stringCommand = "SELECT * FROM LOCATIONS";
-
-        //        //Insert Values into Dataset (a stack of tables)
-
-        //        DataSet locationsDS = new DataSet();
-        //        SqlDataAdapter sqlDA = new SqlDataAdapter(stringCommand, sqlConn);
-        //        sqlDA.Fill(locationsDS);
-
-        //        //Assign datasource to data grid view
-        //        dataGridView1.DataSource = locationsDS.Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        if (sqlConn != null)
-        //        {
-        //            // Close SQL Connection
-        //            sqlConn.Close();
-        //        }
-        //    }
-
-        //}
+        
         private void getDataFromDB()
         {
             try
@@ -70,7 +35,6 @@ namespace CarTracker.Database
             }
         }
 
-        
         private void frmDatabase_Load(object sender, EventArgs e)
         {
             // refresh Data from DB
@@ -130,57 +94,7 @@ namespace CarTracker.Database
                 clearTextFields();
             }
         }
-        //private void addLocation(string locationName, int parkingSpots, string locationCity)
-        //{
-        //    SqlConnection sqlConn = null;
-        //    try
-        //    {
-        //        sqlConn = new SqlConnection();
-        //        sqlConn.ConnectionString = connectionString;
-                
-        //        //Open SQL Connection
-        //        sqlConn.Open();
-
-        //        //Commented to implement stored procedure
-        //        //string stringCommand = "INSERT INTO LOCATIONS([Location Name],[Parking Spots],[Location City])" +
-        //           // "Values('" + locationName + "' ,'" + parkingSpots + "' ,'" + locationCity + "')";
-
-        //       // SqlCommand sqlCommand = sqlConn.CreateCommand();
-        //       // sqlCommand.CommandText = stringCommand;
-
-        //        // implement stored procedure
-        //        SqlCommand sqlCommand = sqlConn.CreateCommand();
-        //        sqlCommand.CommandType = CommandType.StoredProcedure;
-        //        sqlCommand.CommandText = "usp_add_location";
-                
-        //        //add parameters with values
-        //        sqlCommand.Parameters.AddWithValue("@LocationName", txtLocationName.Text);
-        //        sqlCommand.Parameters.AddWithValue("@ParkingSpots", txtParkingSpots.Text);
-        //        sqlCommand.Parameters.AddWithValue("@LocationCity", txtLocationCity.Text);
-
-        //        //add output parameters
-        //        sqlCommand.Parameters.Add("@Result", SqlDbType.NVarChar, 100).Direction = ParameterDirection.Output;
-
-        //        sqlCommand.ExecuteNonQuery();
-        //        //get result from stored procedure
-        //        if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
-        //        {
-        //            MessageBox.Show(sqlCommand.Parameters["@Result"].Value.ToString());
-        //        }
-                
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        // Close SQL Connection
-        //        sqlConn.Close();
-        //        clearTextFields();
-        //    }
-
-        //}
+       
         private void clearTextFields()
         {
             txtLocationName.Text = String.Empty;
@@ -237,40 +151,16 @@ namespace CarTracker.Database
         }
         private void updateLocation(string locationName, int parkingSpots, string locationCity)
         {
-            SqlConnection sqlConn = null;
             try
             {
-                sqlConn = new SqlConnection();
-                sqlConn.ConnectionString = connectionString;
-                //Open SQL Connection
-                sqlConn.Open();
                 if (locationID > 0)
                 {
-                    //Update to include stored procedure
-                    //string stringCommand = "UPDATE LOCATIONS"  +
-                       // " SET [Location Name] = '" + locationName + "'" + "," + "[Parking Spots] = '" + parkingSpots + "'" + "," +
-                       //     "[Location City] = '" + locationCity + "'" +
-                     //   " WHERE [location ID] = " + locationID;
-                   // SqlCommand sqlCommand = sqlConn.CreateCommand();
-                  //  sqlCommand.CommandText = stringCommand;
-                    SqlCommand sqlCommand = sqlConn.CreateCommand();
-                    sqlCommand.CommandType = CommandType.StoredProcedure;
-                    sqlCommand.CommandText = "usp_update_location";
-
-                    //add parameters with values
-                    sqlCommand.Parameters.AddWithValue("LocationID", locationID);
-                    sqlCommand.Parameters.AddWithValue("LocationName", txtLocationName.Text);
-                    sqlCommand.Parameters.AddWithValue("ParkingSpots", txtParkingSpots.Text);
-                    sqlCommand.Parameters.AddWithValue("LocationCity", txtLocationCity.Text);
-
-                    
-                    sqlCommand.ExecuteNonQuery();
+                    objDBStudentDetails.updateLocation(locationName, parkingSpots, locationCity, locationID);
                 }
                 else
                 {
-                    MessageBox.Show("Please select a query");
+                    MessageBox.Show("Please select a location");
                 }
-                
             }
             catch (Exception ex)
             {
@@ -278,11 +168,11 @@ namespace CarTracker.Database
             }
             finally
             {
-                // Close SQL Connection
-                sqlConn.Close();
                 clearTextFields();
             }
         }
+
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -388,5 +278,140 @@ namespace CarTracker.Database
                 sqlConn.Close();
             }
         }
+        //private void getDataFromDB()
+        //{
+        //    SqlConnection sqlConn = null;
+        //    try
+        //    {
+        //        sqlConn = new SqlConnection();
+        //        sqlConn.ConnectionString = connectionString;
+
+        //        //Open SQL Connection
+        //        sqlConn.Open();
+
+        //        string stringCommand = "SELECT * FROM LOCATIONS";
+
+        //        //Insert Values into Dataset (a stack of tables)
+
+        //        DataSet locationsDS = new DataSet();
+        //        SqlDataAdapter sqlDA = new SqlDataAdapter(stringCommand, sqlConn);
+        //        sqlDA.Fill(locationsDS);
+
+        //        //Assign datasource to data grid view
+        //        dataGridView1.DataSource = locationsDS.Tables[0];
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        if (sqlConn != null)
+        //        {
+        //            // Close SQL Connection
+        //            sqlConn.Close();
+        //        }
+        //    }
+
+        //}
+        //private void addLocation(string locationName, int parkingSpots, string locationCity)
+        //{
+        //    SqlConnection sqlConn = null;
+        //    try
+        //    {
+        //        sqlConn = new SqlConnection();
+        //        sqlConn.ConnectionString = connectionString;
+
+        //        //Open SQL Connection
+        //        sqlConn.Open();
+
+        //        //Commented to implement stored procedure
+        //        //string stringCommand = "INSERT INTO LOCATIONS([Location Name],[Parking Spots],[Location City])" +
+        //           // "Values('" + locationName + "' ,'" + parkingSpots + "' ,'" + locationCity + "')";
+
+        //       // SqlCommand sqlCommand = sqlConn.CreateCommand();
+        //       // sqlCommand.CommandText = stringCommand;
+
+        //        // implement stored procedure
+        //        SqlCommand sqlCommand = sqlConn.CreateCommand();
+        //        sqlCommand.CommandType = CommandType.StoredProcedure;
+        //        sqlCommand.CommandText = "usp_add_location";
+
+        //        //add parameters with values
+        //        sqlCommand.Parameters.AddWithValue("@LocationName", txtLocationName.Text);
+        //        sqlCommand.Parameters.AddWithValue("@ParkingSpots", txtParkingSpots.Text);
+        //        sqlCommand.Parameters.AddWithValue("@LocationCity", txtLocationCity.Text);
+
+        //        //add output parameters
+        //        sqlCommand.Parameters.Add("@Result", SqlDbType.NVarChar, 100).Direction = ParameterDirection.Output;
+
+        //        sqlCommand.ExecuteNonQuery();
+        //        //get result from stored procedure
+        //        if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
+        //        {
+        //            MessageBox.Show(sqlCommand.Parameters["@Result"].Value.ToString());
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        // Close SQL Connection
+        //        sqlConn.Close();
+        //        clearTextFields();
+        //    }
+
+        //}
+        //private void updateLocation(string locationName, int parkingSpots, string locationCity)
+        //{
+        //    SqlConnection sqlConn = null;
+        //    try
+        //    {
+        //        sqlConn = new SqlConnection();
+        //        sqlConn.ConnectionString = connectionString;
+        //        //Open SQL Connection
+        //        sqlConn.Open();
+        //        if (locationID > 0)
+        //        {
+        //            //Update to include stored procedure
+        //            //string stringCommand = "UPDATE LOCATIONS"  +
+        //               // " SET [Location Name] = '" + locationName + "'" + "," + "[Parking Spots] = '" + parkingSpots + "'" + "," +
+        //               //     "[Location City] = '" + locationCity + "'" +
+        //             //   " WHERE [location ID] = " + locationID;
+        //           // SqlCommand sqlCommand = sqlConn.CreateCommand();
+        //          //  sqlCommand.CommandText = stringCommand;
+        //            SqlCommand sqlCommand = sqlConn.CreateCommand();
+        //            sqlCommand.CommandType = CommandType.StoredProcedure;
+        //            sqlCommand.CommandText = "usp_update_location";
+
+        //            //add parameters with values
+        //            sqlCommand.Parameters.AddWithValue("LocationID", locationID);
+        //            sqlCommand.Parameters.AddWithValue("LocationName", txtLocationName.Text);
+        //            sqlCommand.Parameters.AddWithValue("ParkingSpots", txtParkingSpots.Text);
+        //            sqlCommand.Parameters.AddWithValue("LocationCity", txtLocationCity.Text);
+
+
+        //            sqlCommand.ExecuteNonQuery();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Please select a query");
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        // Close SQL Connection
+        //        sqlConn.Close();
+        //        clearTextFields();
+        //    }
+        //}
     }
 }

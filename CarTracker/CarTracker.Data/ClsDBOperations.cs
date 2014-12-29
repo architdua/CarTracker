@@ -83,10 +83,14 @@ namespace CarTracker.Data
                     sqlCommand.Parameters.Add(entry.Key, SqlDbType.NVarChar, entry.Value).Direction = ParameterDirection.Output;
                 }
                 sqlCommand.ExecuteNonQuery();
-                if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
+                if (pOutputParameters.Count > 0)
                 {
-                   return sqlCommand.Parameters["@Result"].Value.ToString();
+                    if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
+                    {
+                       return sqlCommand.Parameters["@Result"].Value.ToString();
+                    }
                 }
+                
                 return null; 
             }
             finally

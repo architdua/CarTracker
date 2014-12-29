@@ -17,6 +17,7 @@ namespace CarTracker.Domain
             string stringCmd = "SELECT * FROM LOCATIONS";
             return objDBOperations.executeQuery(stringCmd);
         }
+
         public string addLocation(string locationName, int parkingSpots, string locationCity)
         {
             string storedProcedure = "usp_add_location";
@@ -27,6 +28,18 @@ namespace CarTracker.Domain
             Dictionary<string, int> outputParameters = new Dictionary<string, int>();
             outputParameters.Add("@Result", 100);
             return objDBOperations.ExecuteStoredProcedure(storedProcedure, inputParameters, outputParameters);
+        }
+
+        public void updateLocation(string locationName, int parkingSpots, string locationCity, int locationID)
+        {
+            string storedProcedure = "usp_update_location";
+            Dictionary<string, string> inputParameters = new Dictionary<string, string>();
+            inputParameters.Add("@LocationID", locationID.ToString());
+            inputParameters.Add("@LocationName", locationName);
+            inputParameters.Add("@ParkingSpots", parkingSpots.ToString());
+            inputParameters.Add("@LocationCity", locationCity);
+            Dictionary<string, int> outputParameters = new Dictionary<string, int>();
+            objDBOperations.ExecuteStoredProcedure(storedProcedure, inputParameters, outputParameters);
         }
     }
 }
