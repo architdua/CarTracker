@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -65,33 +66,46 @@ namespace CarTracker.Data
 
         }
 
-        public string ExecuteStoredProcedure(string pStoredProcedure, Dictionary<string, string> pInputParameters, Dictionary<string, int> pOutputParameters)
+        public Dictionary<string, string> ExecuteStoredProcedure(string pStoredProcedure, Dictionary<string, string> pInputParameters, Dictionary<string, string> pOutputParameters)
         {
             try
             {
                 createConnection();
                 SqlCommand sqlCommand = sqlConn.CreateCommand();
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.CommandText = pStoredProcedure; 
-
+                sqlCommand.CommandText = pStoredProcedure;
+                Dictionary<string, string> output = new Dictionary<string, string>();
+              
                 foreach(KeyValuePair<string, string> entry in pInputParameters)
                 {
                     sqlCommand.Parameters.AddWithValue(entry.Key, entry.Value);
                 }
-                foreach (KeyValuePair<string, int> entry in pOutputParameters)
+          
+                foreach (KeyValuePair<string, string> entry in pOutputParameters)
                 {
-                    sqlCommand.Parameters.Add(entry.Key, SqlDbType.NVarChar, entry.Value).Direction = ParameterDirection.Output;
+                    if (entry.Value == "nvarchar")
+                    {
+                        sqlCommand.Parameters.Add(entry.Key, SqlDbType.NVarChar, 50).Direction = ParameterDirection.Output;
+                    }
+                    if(entry.Value == "int")
+                    {
+                        sqlCommand.Parameters.Add(entry.Key, SqlDbType.Int).Direction = ParameterDirection.Output;
+                    }
                 }
                 sqlCommand.ExecuteNonQuery();
                 if (pOutputParameters.Count > 0)
                 {
-                    if (sqlCommand.Parameters["@Result"].Value.ToString().Length > 0)
+                    foreach (KeyValuePair<string, string> entry in pOutputParameters)
                     {
-                       return sqlCommand.Parameters["@Result"].Value.ToString();
+                        if (sqlCommand.Parameters[entry.Key].Value.ToString().Length > 0)
+                        {
+                            output.Add(entry.Key, sqlCommand.Parameters[entry.Key].Value.ToString());
+                        }
                     }
+
                 }
-                
-                return null; 
+
+                return output; 
             }
             finally
             {

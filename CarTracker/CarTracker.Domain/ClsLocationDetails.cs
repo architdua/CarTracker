@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CarTracker.Data;
 using System.Data;
+using System.Collections;
 
 namespace CarTracker.Domain
 {
@@ -18,15 +19,15 @@ namespace CarTracker.Domain
             return objDBOperations.executeQuery(stringCmd);
         }
 
-        public string addLocation(string locationName, int parkingSpots, string locationCity)
+        public Dictionary<string, string> addLocation(string locationName, int parkingSpots, string locationCity)
         {
             string storedProcedure = "usp_add_location";
             Dictionary<string, string> inputParameters = new Dictionary<string, string>();
             inputParameters.Add("@LocationName", locationName);
             inputParameters.Add("@ParkingSpots", parkingSpots.ToString());
             inputParameters.Add("@LocationCity", locationCity);
-            Dictionary<string, int> outputParameters = new Dictionary<string, int>();
-            outputParameters.Add("@Result", 100);
+            Dictionary<string, string> outputParameters = new Dictionary<string, string>();
+            outputParameters.Add("@Result", "nvarchar");
             return objDBOperations.ExecuteStoredProcedure(storedProcedure, inputParameters, outputParameters);
         }
 
@@ -38,8 +39,29 @@ namespace CarTracker.Domain
             inputParameters.Add("@LocationName", locationName);
             inputParameters.Add("@ParkingSpots", parkingSpots.ToString());
             inputParameters.Add("@LocationCity", locationCity);
-            Dictionary<string, int> outputParameters = new Dictionary<string, int>();
+            Dictionary<string, string> outputParameters = new Dictionary<string, string>();
             objDBOperations.ExecuteStoredProcedure(storedProcedure, inputParameters, outputParameters);
+        }
+
+        public void deleteLocation(int locationID)
+        {
+            string storedProcedure = "usp_delete_location";
+            Dictionary<string, string> inputParameters = new Dictionary<string, string>();
+            inputParameters.Add("@LocationID", locationID.ToString());
+            Dictionary<string, string> outputParameters = new Dictionary<string, string>();
+            objDBOperations.ExecuteStoredProcedure(storedProcedure, inputParameters, outputParameters);
+          
+        }
+        public Dictionary<string, string> getValues(string locationName)
+        {
+            string storedProcedure = "usp_get_location";
+            Dictionary<string, string> inputParameters = new Dictionary<string, string>();
+            inputParameters.Add("@LocationName", locationName);
+            Dictionary<string, string> outputParameters = new Dictionary<string, string>();
+            outputParameters.Add("@ReturnResult", "nvarchar");
+            outputParameters.Add("@ReturnLocationCity", "nvarchar");
+            outputParameters.Add("ReturnParkingSpots", "int");
+            return objDBOperations.ExecuteStoredProcedure(storedProcedure, inputParameters, outputParameters);
         }
     }
 }
