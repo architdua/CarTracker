@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CarTracker.Data;
 using System.Data;
 using System.Collections;
-
+using CarTracker.Data;
 namespace CarTracker.Domain
 {
     public class ClsLocationDetails
     {
         CarTracker.Data.ClsDBOperations objDBOperations = new ClsDBOperations();
-
+        public Dictionary<string, string> login(string username, string password)
+        {
+            string storedProcedure = "usp_login";
+            Dictionary<string, string> inputParameters = new Dictionary<string, string>();
+            inputParameters.Add("@loginName", username);
+            inputParameters.Add("@password", password);
+            Dictionary<string, string> outputParameters = new Dictionary<string, string>();
+            outputParameters.Add("@result", "nvarchar");
+            return objDBOperations.ExecuteStoredProcedure(storedProcedure, inputParameters, outputParameters);
+        }
         public DataSet getDataFromDB()
         {
             string stringCmd = "SELECT * FROM LOCATIONS";

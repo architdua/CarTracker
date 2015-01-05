@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Locations" targetNamespace="http://tempuri.org/Locations.xsd" xmlns:mstns="http://tempuri.org/Locations.xsd" xmlns="http://tempuri.org/Locations.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Locations" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Locations" msprop:Generator_UserDSName="Locations">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LocationsTable" msprop:Generator_TableClassName="LocationsTableDataTable" msprop:Generator_TableVarName="tableLocationsTable" msprop:Generator_RowChangedName="LocationsTableRowChanged" msprop:Generator_TablePropName="LocationsTable" msprop:Generator_RowDeletingName="LocationsTableRowDeleting" msprop:Generator_RowChangingName="LocationsTableRowChanging" msprop:Generator_RowEvHandlerName="LocationsTableRowChangeEventHandler" msprop:Generator_RowDeletedName="LocationsTableRowDeleted" msprop:Generator_RowClassName="LocationsTableRow" msprop:Generator_UserTableName="LocationsTable" msprop:Generator_RowEvArgName="LocationsTableRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Location_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnLocation_ID" msprop:Generator_ColumnPropNameInRow="Location_ID" msprop:Generator_ColumnPropNameInTable="Location_IDColumn" msprop:Generator_UserColumnName="Location ID" type="xs:string" minOccurs="0" />
+              <xs:element name="Location_x0020_Name" msprop:Generator_ColumnVarNameInTable="columnLocation_Name" msprop:Generator_ColumnPropNameInRow="Location_Name" msprop:Generator_ColumnPropNameInTable="Location_NameColumn" msprop:Generator_UserColumnName="Location Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Parking_x0020_Spots" msprop:Generator_ColumnVarNameInTable="columnParking_Spots" msprop:Generator_ColumnPropNameInRow="Parking_Spots" msprop:Generator_ColumnPropNameInTable="Parking_SpotsColumn" msprop:Generator_UserColumnName="Parking Spots" type="xs:string" minOccurs="0" />
+              <xs:element name="Location_x0020_City" msprop:Generator_ColumnVarNameInTable="columnLocation_City" msprop:Generator_ColumnPropNameInRow="Location_City" msprop:Generator_ColumnPropNameInTable="Location_CityColumn" msprop:Generator_UserColumnName="Location City" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

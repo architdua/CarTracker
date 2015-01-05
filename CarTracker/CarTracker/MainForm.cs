@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CarTracker
 {
-    public partial class frmMainForm : Form
+    public partial class frmMainForm : MetroForm
     {
         
 
@@ -46,6 +47,13 @@ namespace CarTracker
             Database.frmDatabase newLocationDB = new Database.frmDatabase();
             newLocationDB.MdiParent = this;
             newLocationDB.Show();
+        }
+
+        private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reports.Viewer.ReportViewer newReportViewer = new Reports.Viewer.ReportViewer();
+            newReportViewer.MdiParent = this;
+            newReportViewer.Show();
         }
     }
 }
