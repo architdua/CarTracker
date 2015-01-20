@@ -35,6 +35,7 @@
             this.locationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.locationsDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectionStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@
             this.addCarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(244, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(335, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -55,7 +56,8 @@
             this.carFinderToolStripMenuItem,
             this.locationsToolStripMenuItem,
             this.locationsDatabaseToolStripMenuItem,
-            this.reportsToolStripMenuItem});
+            this.reportsToolStripMenuItem,
+            this.connectionStringToolStripMenuItem});
             this.addCarToolStripMenuItem.Name = "addCarToolStripMenuItem";
             this.addCarToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.addCarToolStripMenuItem.Text = "File";
@@ -95,10 +97,17 @@
             this.reportsToolStripMenuItem.Text = "Reports";
             this.reportsToolStripMenuItem.Click += new System.EventHandler(this.reportsToolStripMenuItem_Click);
             // 
+            // connectionStringToolStripMenuItem
+            // 
+            this.connectionStringToolStripMenuItem.Name = "connectionStringToolStripMenuItem";
+            this.connectionStringToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.connectionStringToolStripMenuItem.Text = "Connection String";
+            this.connectionStringToolStripMenuItem.Click += new System.EventHandler(this.connectionStringToolStripMenuItem_Click);
+            // 
             // frmMainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(375, 295);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -106,6 +115,7 @@
             this.Text = "Car Tracker";
             this.TransparencyKey = System.Drawing.Color.Empty;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -122,6 +132,7 @@
         private System.Windows.Forms.ToolStripMenuItem locationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem locationsDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem connectionStringToolStripMenuItem;
     }
 }
 

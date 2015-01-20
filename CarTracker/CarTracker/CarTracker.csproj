@@ -85,6 +85,12 @@
     <Compile Include="CarFinder.Designer.cs">
       <DependentUpon>CarFinder.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionString.Designer.cs">
+      <DependentUpon>ConnectionString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\Database.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CarFinder.resx">
       <DependentUpon>CarFinder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionString.resx">
+      <DependentUpon>ConnectionString.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Database\Database.resx">
       <DependentUpon>Database.cs</DependentUpon>

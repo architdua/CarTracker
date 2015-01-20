@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,21 @@ namespace CarTracker
             Reports.Viewer.ReportViewer newReportViewer = new Reports.Viewer.ReportViewer();
             newReportViewer.MdiParent = this;
             newReportViewer.Show();
+        }
+
+        private void connectionStringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConnectionString newConnectionString = new ConnectionString();
+            newConnectionString.MdiParent = this;
+            newConnectionString.Show();
+        }
+
+        private void frmMainForm_Load(object sender, EventArgs e)
+        {
+            StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory +
+                "\\ConnectionString.txt");
+            CarTracker.Data.ClsDBOperations.ConnectionString = sr.ReadToEnd();
+            sr.Close();
         }
     }
 }

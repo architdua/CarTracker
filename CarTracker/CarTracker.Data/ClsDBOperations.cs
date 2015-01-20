@@ -11,7 +11,7 @@ namespace CarTracker.Data
 {
     public class ClsDBOperations
     {
-        string connectionString = "Server=ARCHIT;Database=Sample;Trusted_Connection=True";
+        public static string ConnectionString = "";
         SqlConnection sqlConn = null;
 
         public bool createConnection()
@@ -19,7 +19,7 @@ namespace CarTracker.Data
             if (sqlConn == null)
             {
                 sqlConn = new SqlConnection();
-                sqlConn.ConnectionString = connectionString;
+                sqlConn.ConnectionString = ConnectionString;
             }
 
             sqlConn.Open();
